@@ -1,37 +1,38 @@
 package com.turbulence6th;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
         Composer composer = new Composer();
 	    ScaleManager scaleManager = new ScaleManager();
-        Scale scale = scaleManager.minor(Note.A);
-        List<OctavedChord> chordList = Arrays.asList(
-            scale.octavedChord(Note.A, 4),
-            scale.octavedChord(Note.G, 4),
-            scale.octavedChord(Note.F, 4),
-            scale.octavedChord(Note.E, 4)
-        );
+	    ChordManager chordManager = new ChordManager();
+	    Note rootNote = Note.A;
 
-        int divide = 8;
-        int duration = 200;
+	    composer.play(Instrument.PIANO, chordManager.major(Note.A, 4), 2000);
 
-        for (int i = 0;; i = (i + 1) % 4) {
-            int remaining = divide;
-            int c = 1 + new Random().nextInt(remaining);
-
-            composer.play(Instrument.PIANO, chordList.get(i), c * duration);
-            remaining -= c;
-
-            while (remaining != 0) {
-                c = 1 + new Random().nextInt(remaining);
-                composer.play(Instrument.PIANO, chordList.get(i).getNoteList().get(new Random().nextInt(3)), c * duration);
-                remaining -= c;
-            }
-        }
+//        Scale scale = scaleManager.minor(rootNote);
+//        List<OctavedChord> chordList = scale.allOctavedChords(4);
+//
+//        int chordSize = chordList.size();
+//
+//        while (true) {
+//            composer.play(Instrument.PIANO, chordList.get(0), 1000);
+//            composer.play(Instrument.PIANO, chordList.get(0).get(2), 500);
+//            composer.play(Instrument.PIANO, chordList.get(0).get(1), 500);
+//
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 1), 1000);
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 1).get(2), 250);
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 1).get(1), 250);
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 1).get(2), 500);
+//
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 2), 1000);
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 2).get(1), 500);
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 2).get(2), 500);
+//
+//            composer.play(Instrument.PIANO, chordList.get(chordSize - 3), 1000);
+//            composer.play(Instrument.PIANO, new OctavedNote(rootNote.low(1), 4), 1000);
+//        }
     }
 }

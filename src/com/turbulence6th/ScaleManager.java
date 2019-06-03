@@ -54,4 +54,14 @@ public class ScaleManager {
         scale.add(note.high(2));
         return scale;
     }
+
+    public Scale pentatonicMinor(Note note) {
+        Scale scale = new Scale();
+        scale.add(note);
+        scale.add(note = note.high(3));
+        scale.add(note = note.high(2));
+        scale.add(note = note.high(2));
+        scale.add(note.high(3));
+        return scale;
+    }
 }

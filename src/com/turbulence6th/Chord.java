@@ -15,6 +15,10 @@ public class Chord {
         noteList.add(note);
     }
 
+    public Note get(int index) {
+        return noteList.get(index);
+    }
+
     @Override
     public String toString() {
         return noteList.toString();

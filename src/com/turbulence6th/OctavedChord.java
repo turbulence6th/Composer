@@ -15,6 +15,10 @@ public class OctavedChord {
         octavedNoteList.add(note);
     }
 
+    public OctavedNote get(int index) {
+        return octavedNoteList.get(index);
+    }
+
     @Override
     public String toString() {
         return octavedNoteList.toString();

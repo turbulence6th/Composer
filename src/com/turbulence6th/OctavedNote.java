@@ -10,22 +10,41 @@ public class OctavedNote {
         this.octave = octave;
     }
 
-    public OctavedNote fullQuartet() {
-        Note fullQuartetNote = note.high(5);
-        if (fullQuartetNote.getValue() < note.getValue()) {
-            return new OctavedNote(fullQuartetNote, octave + 1);
+    public OctavedNote high(int value) {
+        Note nextNote = note.high(value);
+        if (nextNote.getValue() < note.getValue()) {
+            return new OctavedNote(nextNote, octave + 1);
         }
 
-        return new OctavedNote(fullQuartetNote, octave);
+        return new OctavedNote(nextNote, octave);
     }
 
-    public OctavedNote fullPenta() {
-        Note fullPenta = note.high(7);
-        if (fullPenta.getValue() < note.getValue()) {
-            return new OctavedNote(fullPenta, octave + 1);
-        }
+    public OctavedNote minor2() {
+        return high(1);
+    }
 
-        return new OctavedNote(fullPenta, octave);
+    public OctavedNote major2() {
+        return high(2);
+    }
+
+    public OctavedNote minor3() {
+        return high(3);
+    }
+
+    public OctavedNote major3() {
+        return high(4);
+    }
+
+    public OctavedNote full4() {
+        return high(5);
+    }
+
+    public OctavedNote augmented4() {
+        return high(6);
+    }
+
+    public OctavedNote full5() {
+        return high(7);
     }
 
     public Note getNote() {
